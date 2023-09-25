@@ -1,0 +1,53 @@
+<div class="flex flex-col text-center max-w-md mx-auto">
+  <h4 class="text-5xl font-black uppercase pt-10">{{ mensaje }}</h4>
+
+  <p class="text-6xl font-black py-8">
+    {{ cuenta }}
+  </p>
+
+  <div class="flex justify-between">
+    <button
+      (click)="cuenta = cuenta - 1"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      Menos uno
+    </button>
+    <button
+      (click)="cuenta = 0"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      Reiniciar
+    </button>
+    <button
+      (click)="cuenta = cuenta + 1"
+      type="button"
+      class="text-gray-900 bg-white border border-gray-300 focus:outline-none hover:bg-gray-100 focus:ring-4 focus:ring-gray-200 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-gray-800 dark:text-white dark:border-gray-600 dark:hover:bg-gray-700 dark:hover:border-gray-600 dark:focus:ring-gray-700"
+    >
+      Más uno
+    </button>
+  </div>
+
+  <div class="flex flex-col mt-10">
+    <a
+      href="login"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >Iniciar Sesion</a
+    >
+
+    <a
+      href="signup"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >Registrar</a
+    >
+  </div>
+
+  <div class="flex flex-col mt-10">
+    <a
+      (click)="cerrarSesion()"
+      class="text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800"
+      >Cerrar Sesion</a
+    >
+  </div>
+</div>
