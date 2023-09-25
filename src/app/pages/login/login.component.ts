@@ -28,6 +28,16 @@ export class LoginComponent implements OnInit {
   }
 
   async login() {
+    // Validar que el correo y la contraseña no esten vacios
+    if (this.correo == "") {
+      alert('Debe ingresar un correo para iniciar sesión.');
+      return;
+    }
+    if (this.contrasena == "") {
+      alert('Debe ingresar una contraseña para iniciar sesión.');
+      return;
+    }
+
     await this.auth.signInWithEmailAndPassword(this.correo, this.contrasena)
       .then((userCredential) => {
         // Inicio de sesión exitoso
