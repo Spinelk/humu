@@ -20,7 +20,6 @@ export class LoginComponent implements OnInit {
     // Redirigir a principal si ya hay un usuario logeado
     this.auth.onAuthStateChanged(user => {
       if (user) {
-        console.log('Log In: Usuario registrado');
         this.router.navigate(['/home']);
         return;
       }
@@ -42,7 +41,7 @@ export class LoginComponent implements OnInit {
       .then((userCredential) => {
         // Inicio de sesión exitoso
         alert('Usuario logueado');
-        console.log('Usuario logueado:', userCredential.user);
+        console.table(userCredential.user?.providerData);
       }).catch((error) => {
         // Manejar errores de inicio de sesión
         console.error('Error al iniciar sesión:', error);

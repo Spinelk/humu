@@ -20,7 +20,6 @@ export class SignupComponent implements OnInit {
     // Redirigir a principal si ya hay un usuario logeado
     this.auth.onAuthStateChanged(user => {
       if (user) {
-        console.log('SignUp: Usuario registrado');
         this.router.navigate(['/home']);
         return;
       }
@@ -28,25 +27,25 @@ export class SignupComponent implements OnInit {
   }
 
   async signup() {
-        // Validar que los campos no esten vacios
-        if (this.correo == "") {
-          alert('Debe ingresar un correo.');
-          return;
-        }
-        if (this.contrasena == "") {
-          alert('Debe ingresar una contraseña.');
-          return;
-        }
-        if (this.contrasena.length < 6) {
-          alert('La contraseña debe tener al menos 6 caracteres.');
-          return;
-        }
+    // Validar que los campos no esten vacios
+    if (this.correo == "") {
+      alert('Debe ingresar un correo.');
+      return;
+    }
+    if (this.contrasena == "") {
+      alert('Debe ingresar una contraseña.');
+      return;
+    }
+    if (this.contrasena.length < 6) {
+      alert('La contraseña debe tener al menos 6 caracteres.');
+      return;
+    }
 
     await this.auth.createUserWithEmailAndPassword(this.correo, this.contrasena)
       .then((userCredential) => {
         // Registro exitoso
         alert('Usuario registrado');
-        console.log('Usuario registrado:', userCredential.user);
+        console.table(userCredential.user?.providerData);
         // ir a la página de inicio
         this.router.navigate(['/home']);
       }).catch((error) => {
