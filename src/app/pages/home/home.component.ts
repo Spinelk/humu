@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -12,6 +13,7 @@ export class HomeComponent implements OnInit {
 
   constructor(
     private auth: AngularFireAuth,
+    private router: Router,
   ) { }
 
   ngOnInit() {
@@ -27,7 +29,9 @@ export class HomeComponent implements OnInit {
   async cerrarSesion() {
     // Cerrar sesion con firebase
     this.auth.signOut().then(() => {
-
+      alert('Sesion cerrada');
+      // this.router.navigate(['/home']);
+      window.location.reload();
     }
     ).catch((error) => {
       // Manejar el error
