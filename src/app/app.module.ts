@@ -11,13 +11,17 @@ import { environment } from '../environments/environment';
 
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { LayoutComponent } from './pages/layout/layout.component';
+import { PanelLateralComponent } from './component/panel-lateral/panel-lateral.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HomeComponent,
     LoginComponent,
-    SignupComponent
+    SignupComponent,
+    LayoutComponent,
+    PanelLateralComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule
