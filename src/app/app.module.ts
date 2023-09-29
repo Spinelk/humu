@@ -12,7 +12,9 @@ import { environment } from '../environments/environment';
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { LayoutComponent } from './pages/layout/layout.component';
-import { PanelLateralComponent } from './component/panel-lateral/panel-lateral.component';
+import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
+import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { ListaComunidadesComponent } from './componentes/menu-lateral/lista-comunidades/lista-comunidades.component';
 
 @NgModule({
   declarations: [
@@ -21,7 +23,9 @@ import { PanelLateralComponent } from './component/panel-lateral/panel-lateral.c
     LoginComponent,
     SignupComponent,
     LayoutComponent,
-    PanelLateralComponent
+    MenuLateralComponent,
+    NavbarComponent,
+    ListaComunidadesComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule

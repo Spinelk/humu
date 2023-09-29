@@ -7,7 +7,7 @@ import { LayoutComponent } from './pages/layout/layout.component';
 
 const routes: Routes = [
   {
-    path: '', redirectTo: 'layout', pathMatch: 'full'
+    path: '', redirectTo: 'home', pathMatch: 'full'
   },
   {
     path: 'home', component: HomeComponent
