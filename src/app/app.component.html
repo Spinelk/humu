@@ -1,11 +1,11 @@
 <main class="bg-white dark:bg-gray-800">
   <app-navbar class="block sm:hidden"></app-navbar>
 
-  <app-menu-lateral [ngClass]="{ hidden: !logueado }"></app-menu-lateral>
+  <app-menu-lateral *ngIf="usuarioLogueado$ | async"></app-menu-lateral>
 
   <div class="h-screen overflow-hidden">
     <div
-      [ngClass]="{'sm:ml-[19rem] rounded-e-none': logueado }"
+      [ngClass]="{ 'sm:ml-[19rem] rounded-e-none': (usuarioLogueado$ | async) }"
       class="p-4 bg-white dark:bg-gray-700 rounded-3xl h-screen"
     >
       <!-- Contenido Principal  -->

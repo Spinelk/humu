@@ -1,16 +1,16 @@
 <div class="flex flex-col text-center max-w-md mx-auto p-5 pt-10">
   <!-- Título principal con el mensaje -->
-  <h4 class="text-4xl font-black uppercase leading-3">{{ mensaje }}</h4>
+  <h4 class="text-4xl font-black uppercase text-gray-200 leading-3">{{ mensaje }}</h4>
   <!-- Subtítulo con el correo del usuario (solo se muestra si usuarioLogueado$ es true) -->
   <h5
     *ngIf="usuarioLogueado$ | async"
-    class="text-2xl font-black uppercase pt-10 leading-3"
+    class="text-2xl font-black uppercase pt-10 text-gray-200 leading-3"
   >
     {{ correo }}
   </h5>
 
   <!-- Contador (solo se muestra si usuarioLogueado$ es true) -->
-  <p *ngIf="usuarioLogueado$ | async" class="text-6xl font-black py-8">
+  <p *ngIf="usuarioLogueado$ | async" class="text-6xl font-black text-gray-200 py-8">
     {{ cuenta }}
   </p>
 

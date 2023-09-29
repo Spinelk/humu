@@ -44,12 +44,13 @@ export class SignupComponent implements OnInit {
     await this.auth.createUserWithEmailAndPassword(this.correo, this.contrasena)
       .then((userCredential) => {
         // Registro exitoso
-        alert('Usuario registrado');
+        alert('Usuario registrado exitosamente.');
         console.table(userCredential.user?.providerData);
         // ir a la página de inicio
         this.router.navigate(['/home']);
       }).catch((error) => {
         // Manejar errores de registro
+        alert('Error al registrar el usuario.');
         console.error('Error al registrar el usuario:', error);
       });
   }
