@@ -2,11 +2,12 @@
   <app-navbar class="block sm:hidden"></app-navbar>
 
   <app-menu-lateral [ngClass]="{ hidden: !logueado }"></app-menu-lateral>
+  <!-- <app-menu-lateral></app-menu-lateral> -->
 
   <div class="h-screen overflow-hidden">
     <div
-      [ngClass]="{'sm:ml-[19rem] rounded-e-none': logueado }"
-      class="p-4 bg-white dark:bg-gray-700 rounded-3xl h-screen"
+      [ngClass]="{'sm:ml-[19rem] rounded-e-none sm:rounded-e-none': logueado }"
+      class="p-4 bg-white dark:bg-gray-700 sm:rounded-3xl h-screen"
     >
       <!-- Contenido Principal  -->
       <router-outlet></router-outlet>
