@@ -14,6 +14,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { LayoutComponent } from './pages/layout/layout.component';
 import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
+import { ListaComunidadesComponent } from './componentes/menu-lateral/lista-comunidades/lista-comunidades.component';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { NavbarComponent } from './componentes/navbar/navbar.component';
     LayoutComponent,
     MenuLateralComponent,
     NavbarComponent,
+    ListaComunidadesComponent
   ],
   imports: [
     BrowserModule, AppRoutingModule, FormsModule, AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule

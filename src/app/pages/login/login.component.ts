@@ -40,10 +40,10 @@ export class LoginComponent implements OnInit {
     await this.auth.signInWithEmailAndPassword(this.correo, this.contrasena)
       .then((userCredential) => {
         // Inicio de sesión exitoso
+        alert('Usuario logueado');
         console.table(userCredential.user?.providerData);
       }).catch((error) => {
         // Manejar errores de inicio de sesión
-        alert('Error al iniciar sesión.');
         console.error('Error al iniciar sesión:', error);
       });
   }
