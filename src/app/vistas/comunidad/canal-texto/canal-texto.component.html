@@ -1,23 +1,22 @@
 <div class="h-screen flex flex-col justify-between">
-  <div class="overflow-y-auto invisible mt-8 scrollbox">
+  <!-- Mensajes enviados -->
+  <div class="overflow-y-auto invisible mt-8 scrollbox flex flex-col-reverse">
     <div class="visible scrollbox-interior">
-      <ul>
+      <ul *ngFor="let _ of [1, 2, 3, 4, 5]">
         <li
-          *ngFor="let _ of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15]"
+          *ngFor="let message of messages | async"
+          class="sent-message"
           class="text-gray-900 bg-white p-4 dark:bg-gray-800 dark:text-white rounded-lg shadow-lg ml-4 mr-4 sm:ml-8 sm:mr-8 mb-4"
         >
-          <Span class="font-bold">Usuario: </Span> Lorem ipsum dolor sit amet
-          consectetur adipisicing elit. Repellendus odit aliquid tenetur
-          perspiciatis est aliquam ab voluptate officiis ullam vero? Consequatur
-          aliquid blanditiis quia soluta aperiam exercitationem optio tenetur
-          vel?
+          <Span class="font-bold">{{ message.name }}: </Span> {{ message.text }}
         </li>
       </ul>
     </div>
   </div>
 
+  <!-- Formulario para enviar mensajes -->
   <div class="py-2">
-    <form>
+    <form (ngSubmit)="sendMessage(messageInput, nameInput)">
       <label for="chat" class="sr-only">Your message</label>
       <div
         class="flex items-center px-3 py-2 rounded-lg bg-white dark:bg-gray-700"
@@ -78,7 +77,9 @@
         </button>
         -->
         <textarea
-          id="chat"
+          id="messageInput"
+          name="messageInput"
+          [(ngModel)]="messageInput"
           rows="1"
           class="block shadow-lg mx-4 p-2.5 w-full text-sm text-gray-900 bg-slate-100 rounded-lg border border-gray-300 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-800 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           placeholder="Escribe un mensaje"
