@@ -17,7 +17,6 @@ import { LayoutLoginComponent } from './layouts/layout-login/layout-login.compon
 // Componenentes
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
-import { ListaComunidadesComponent } from './componentes/menu-lateral/lista-comunidades/lista-comunidades.component';
 
 // Environment
 import { environment } from '../environments/environment';
@@ -40,7 +39,6 @@ import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagin
     // Componenentes
     MenuLateralComponent,
     NavbarComponent,
-    ListaComunidadesComponent,
     PaginaNoEncontradaComponent,
 
     // Layouts
