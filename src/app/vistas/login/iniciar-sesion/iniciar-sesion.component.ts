@@ -3,11 +3,11 @@ import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
-  templateUrl: './login.component.html',
-  styleUrls: ['./login.component.css']
+  selector: 'app-iniciar-sesion',
+  templateUrl: './iniciar-sesion.component.html',
+  styleUrls: ['./iniciar-sesion.component.css']
 })
-export class LoginComponent implements OnInit {
+export class IniciarSesionComponent implements OnInit {
   correo: string = '';
   contrasena: string = '';
 
@@ -40,7 +40,7 @@ export class LoginComponent implements OnInit {
     await this.auth.signInWithEmailAndPassword(this.correo, this.contrasena)
       .then((userCredential) => {
         // Inicio de sesión exitoso
-        alert('Usuario logueado');
+        alert('Inicio de sesión exitoso');
         console.table(userCredential.user?.providerData);
       }).catch((error) => {
         // Manejar errores de inicio de sesión

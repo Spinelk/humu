@@ -6,11 +6,11 @@ import { BehaviorSubject } from 'rxjs';
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
-  styleUrls: ['./home.component.css'],
+  styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
   cuenta = 0;
-  mensaje = '';
+  mensaje = 'Bienvenido';
   correo = '';
   usuarioLogueado$ = new BehaviorSubject<boolean | null>(null);
 
@@ -24,11 +24,9 @@ export class HomeComponent implements OnInit {
     this.auth.onAuthStateChanged(user => {
       if (user && user.email) {
         // Si el usuario esta logueado
-        this.mensaje = 'Bienvenido';
         this.correo = user.email;
         this.usuarioLogueado$.next(true);
       } else {
-        this.mensaje = 'No Autorizado';
         this.usuarioLogueado$.next(false);
       }
     });
@@ -40,6 +38,7 @@ export class HomeComponent implements OnInit {
       await this.auth.signOut();
       alert('Sesion cerrada');
       this.usuarioLogueado$.next(false);
+      this.router.navigate(['/login']);
     } catch (error) {
       // Manejar el error
       alert('Error al cerrar sesion');

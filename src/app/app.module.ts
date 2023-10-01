@@ -6,12 +6,15 @@ import { FormsModule } from '@angular/forms';
 
 // Vistas
 import { AppComponent } from './app.component';
-import { HomeComponent } from './pages/home/home.component';
-import { LoginComponent } from './pages/login/login.component';
-import { SignupComponent } from './pages/signup/signup.component';
+import { HomeComponent } from './vistas/home/home.component';
+import { IniciarSesionComponent } from './vistas/login/iniciar-sesion/iniciar-sesion.component';
+import { RegistrarComponent } from './vistas/login/registrar/registrar.component';
+
+// Layouts
+import { LayoutPrincipalComponent } from './layouts/layout-principal/layout-principal.component';
+import { LayoutLoginComponent } from './layouts/layout-login/layout-login.component';
 
 // Componenentes
-import { LayoutComponent } from './pages/layout/layout.component';
 import { NavbarComponent } from './componentes/navbar/navbar.component';
 import { MenuLateralComponent } from './componentes/menu-lateral/menu-lateral.component';
 import { ListaComunidadesComponent } from './componentes/menu-lateral/lista-comunidades/lista-comunidades.component';
@@ -22,20 +25,27 @@ import { environment } from '../environments/environment';
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
+
+
 
 @NgModule({
   declarations: [
     // Vistas
     AppComponent,
     HomeComponent,
-    LoginComponent,
-    SignupComponent,
+    IniciarSesionComponent,
+    RegistrarComponent,
 
     // Componenentes
-    LayoutComponent,
     MenuLateralComponent,
     NavbarComponent,
-    ListaComunidadesComponent
+    ListaComunidadesComponent,
+    PaginaNoEncontradaComponent,
+
+    // Layouts
+    LayoutPrincipalComponent,
+    LayoutLoginComponent,
   ],
   imports: [
     // Angular
