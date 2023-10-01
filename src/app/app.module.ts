@@ -9,6 +9,9 @@ import { AppComponent } from './app.component';
 import { HomeComponent } from './vistas/home/home.component';
 import { IniciarSesionComponent } from './vistas/login/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarComponent } from './vistas/login/registrar/registrar.component';
+import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
+import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
+import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
 
 // Layouts
 import { LayoutPrincipalComponent } from './layouts/layout-principal/layout-principal.component';
@@ -27,7 +30,6 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
 
 
-
 @NgModule({
   declarations: [
     // Vistas
@@ -35,6 +37,9 @@ import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagin
     HomeComponent,
     IniciarSesionComponent,
     RegistrarComponent,
+    CanalTextoComponent,
+    CanalVideoComponent,
+    CanalAudioComponent,
 
     // Componenentes
     MenuLateralComponent,
