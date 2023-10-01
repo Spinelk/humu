@@ -8,3 +8,16 @@
     background-color: rgb(55 65 81 / 1);
     border-radius: 10px;
 }
+
+.scrollbox-interior,
+.scrollbox:hover {
+    visibility: visible;
+}
+
+.scroll-canales {
+    scrollbar-width: thin;
+}
+
+.scrollbox {
+    scrollbar-width: thin;
+}

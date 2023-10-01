@@ -12,6 +12,9 @@ import { LayoutLoginComponent } from './layouts/layout-login/layout-login.compon
 
 // 404
 import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
+import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
+import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
+import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
 
 const routes: Routes = [
   {
@@ -24,7 +27,15 @@ const routes: Routes = [
       {
         path: 'home', component: HomeComponent
       },
-
+      {
+        path: 'comunidad/nombreCanalTexto', component: CanalTextoComponent
+      },
+      {
+        path: 'comunidad/nombreCanalAudio', component: CanalAudioComponent
+      },
+      {
+        path: 'comunidad/nombreCanalVideo', component: CanalVideoComponent
+      },
     ],
   },
   {

@@ -1,0 +1,4 @@
+.scrollbox-interior,
+.scrollbox:hover {
+    visibility: visible;
+}
