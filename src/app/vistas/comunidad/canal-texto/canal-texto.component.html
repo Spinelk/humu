@@ -2,7 +2,7 @@
   <!-- Mensajes enviados -->
   <div class="overflow-y-auto invisible mt-8 scrollbox flex flex-col-reverse">
     <div class="visible scrollbox-interior">
-      <ul *ngFor="let _ of [1, 2, 3, 4, 5]">
+      <ul>
         <li
           *ngFor="let message of messages | async"
           class="sent-message"
