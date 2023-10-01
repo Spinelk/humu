@@ -1,93 +1,23 @@
 <div class="bg-slate-400 dark:bg-gray-900 h-full flex flex-col justify-between">
-  <!-- Solo llenar la primera lista con un FOR -->
   <div>
     <ul class="grid grid-cols-1 gap-4 p-3">
-      <li>
+      <li *ngFor="let _ of [1,2,3,4,5,6,7,8,9,10]">
         <img
-          class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
+          class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-75 ease-in-out"
           src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
           alt=""
         />
       </li>
     </ul>
-
-    <!-- Placeholders -->
-    <div>
-      <ul class="grid grid-cols-1 gap-4 p-3 pt-1">
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-        <li>
-          <img
-            class="w-full aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-150 ease-in-out"
-            src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-            alt=""
-          />
-        </li>
-      </ul>
-    </div>
-    <!-- Fin Placeholders -->
   </div>
 
   <div
     class="border-t-2 border-gray-900 dark:border-gray-800 p-3 hidden sm:block"
   >
+    <!-- Home -->
     <div class="mt-2 mb-6">
       <svg
-        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto"
+        class="flex-shrink-0 w-6 h-6 text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto hover:transform hover:scale-110 ease-in-out"
         aria-hidden="true"
         xmlns="http://www.w3.org/2000/svg"
         fill="currentColor"
@@ -98,22 +28,24 @@
         />
       </svg>
     </div>
+    <!-- Usuario -->
     <div>
       <button
         type="button"
-        class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 m-auto w-full"
+        class="flex text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 m-auto w-full hover:transform hover:scale-105 hover:rounded-2xl transition duration-75 ease-in-out"
         aria-expanded="false"
         data-dropdown-toggle="dropdown-top-user"
         data-dropdown-placement="top"
       >
         <span class="sr-only">Open user menu</span>
         <img
-          class="w-full rounded-full"
+          class="w-full rounded-full hover:transform hover:rounded-2xl transition duration-75 ease-in-out"
           src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
           alt="user photo"
         />
       </button>
     </div>
+    <!-- Pop up menu -->
     <div
       class="z-50 hidden my-4 text-base list-none bg-white divide-y divide-gray-100 rounded shadow dark:bg-gray-700 dark:divide-gray-600"
       id="dropdown-top-user"
