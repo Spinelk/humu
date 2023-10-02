@@ -1,32 +1,20 @@
 import { Component, OnInit } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-registrar',
   templateUrl: './registrar.component.html',
   styleUrls: ['./registrar.component.css']
 })
-export class RegistrarComponent implements OnInit {
+export class RegistrarComponent {
   correo: string = '';
   contrasena: string = '';
 
   constructor(
-    private router: Router,
-    private auth: AngularFireAuth,
+    private ServicioAutenticacion: AutenticacionService,
   ) { }
 
-  ngOnInit() {
-    // Redirigir a principal si ya hay un usuario logeado
-    this.auth.onAuthStateChanged(user => {
-      if (user) {
-        this.router.navigate(['/home']);
-        return;
-      }
-    });
-  }
-
-  async signup() {
+  registrar() {
     // Validar que los campos no esten vacios
     if (this.correo == "") {
       alert('Debe ingresar un correo.');
@@ -41,16 +29,6 @@ export class RegistrarComponent implements OnInit {
       return;
     }
 
-    await this.auth.createUserWithEmailAndPassword(this.correo, this.contrasena)
-      .then((userCredential) => {
-        // Registro exitoso
-        alert('Usuario registrado');
-        console.table(userCredential.user?.providerData);
-        // ir a la página de inicio
-        this.router.navigate(['/home']);
-      }).catch((error) => {
-        // Manejar errores de registro
-        console.error('Error al registrar el usuario:', error);
-      });
+    this.ServicioAutenticacion.registrarUsuarioConCorreo(this.correo, this.contrasena)
   }
 }
