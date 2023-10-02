@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Router } from '@angular/router';
-import { BehaviorSubject } from 'rxjs';
+import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-home',
@@ -12,34 +12,22 @@ export class HomeComponent implements OnInit {
   cuenta = 0;
   mensaje = 'Bienvenido';
   correo = '';
-  usuarioLogueado$ = new BehaviorSubject<boolean | null>(null);
 
   constructor(
-    private auth: AngularFireAuth,
     private router: Router,
+    private ServicioAutenticacion: AutenticacionService,
   ) { }
 
   ngOnInit() {
-    // Verificar si el usuario esta logueado
-    this.auth.onAuthStateChanged(user => {
-      if (user && user.email) {
-        // Si el usuario esta logueado
-        this.correo = user.email;
-        this.usuarioLogueado$.next(true);
-      } else {
-        this.usuarioLogueado$.next(false);
-      }
-    });
   }
 
-  async cerrarSesion() {
+  cerrarSesion() {
     // Cerrar sesion con firebase
     try {
-      await this.auth.signOut();
+      this.ServicioAutenticacion.cerrarSesion();
       alert('Sesion cerrada');
-      this.usuarioLogueado$.next(false);
       this.router.navigate(['/login']);
-    } catch (error) {
+    } catch {
       // Manejar el error
       alert('Error al cerrar sesion');
       console.log('Error al cerrar sesion');
