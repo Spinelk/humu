@@ -22,6 +22,7 @@ export class AutenticacionService {
     return this.afAuth.signInWithEmailAndPassword(correo, contrasena).then((userCredential) => {
       // Inicio de sesión exitoso
       alert('Inicio de sesión exitoso');
+      this.router.navigate(['/home']);
       console.table(userCredential.user?.providerData);
     }).catch((error) => {
       console.error('Error al iniciar sesión:', error);
@@ -61,6 +62,7 @@ export class AutenticacionService {
       .then((userCredential) => {
         // Registro exitoso
         alert('Usuario registrado');
+        this.router.navigate(['/home']);
         console.table(userCredential.user?.providerData);
         // ir a la página de inicio
         this.router.navigate(['/home']);
