@@ -7,6 +7,7 @@ import { map } from 'rxjs/operators';
 export interface Message {
   name: string; // Agrega la propiedad 'name'
   text: string;
+  fecha_hora: string;
   isEditing: boolean;
   editedText: string;
 }
@@ -55,8 +56,11 @@ export class CanalTextoComponent {
   sendMessage(message: string, name: string) {
     // #Establece el correo electrónico del usuario actual como nombre
     const displayName = name.trim() === '' ? this.userEmail : name;
+
+    const fecha = new Date();
+
     // #Agrega el mensaje a la base de datos
-    this.dbMessages.push({ name: displayName, text: message });
+    this.dbMessages.push({ name: displayName, text: message, fecha_hora: fecha.toLocaleString() });
     // #Restablece el campo de entrada de mensaje
     this.messageInput = '';
     // #Restablece el campo de entrada de nombre
