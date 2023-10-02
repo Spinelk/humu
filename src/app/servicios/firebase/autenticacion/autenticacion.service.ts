@@ -1,6 +1,9 @@
-import { Injectable } from '@angular/core';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Injectable, NgZone } from '@angular/core';
 import { Router } from '@angular/router';
+
+// firebase
+import { AngularFireAuth } from '@angular/fire/compat/auth';
+import * as auth from 'firebase/auth';
 
 @Injectable({
   providedIn: 'root'
@@ -10,6 +13,7 @@ export class AutenticacionService {
   constructor(
     private afAuth: AngularFireAuth,
     private router: Router,
+    private ngZone: NgZone,
   ) {
   }
 
