@@ -12,6 +12,7 @@ import { RegistrarComponent } from './vistas/login/registrar/registrar.component
 import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
 import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
 import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
+import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
 
 // Layouts
 import { LayoutPrincipalComponent } from './layouts/layout-principal/layout-principal.component';
@@ -27,7 +28,6 @@ import { environment } from '../environments/environment';
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
-import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
 
 
 @NgModule({
