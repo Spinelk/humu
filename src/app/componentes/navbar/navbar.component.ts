@@ -15,15 +15,6 @@ export class NavbarComponent {
   ) { }
 
   cerrarSesion() {
-    // Cerrar sesion con firebase
-    try {
-      this.ServicioAutenticacion.cerrarSesion();
-      alert('Sesion cerrada');
-      this.router.navigate(['/login']);
-    } catch {
-      // Manejar el error
-      alert('Error al cerrar sesion');
-      console.log('Error al cerrar sesion');
-    }
+    this.ServicioAutenticacion.cerrarSesion();
   }
 }

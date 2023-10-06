@@ -7,7 +7,7 @@ import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/a
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent{
+export class HomeComponent {
   cuenta = 0;
   mensaje = 'Bienvenido';
   correo = '';
@@ -17,5 +17,7 @@ export class HomeComponent{
     private ServicioAutenticacion: AutenticacionService,
   ) { }
 
-  cerrarSesion() { }
+  cerrarSesion() {
+    this.ServicioAutenticacion.cerrarSesion();
+  }
 }
