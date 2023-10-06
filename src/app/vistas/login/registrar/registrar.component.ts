@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { AutenticacionService, UserData } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
 
 @Component({

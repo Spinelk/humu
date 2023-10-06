@@ -65,6 +65,7 @@ export class AutenticacionService {
   }
 
   cerrarSesion() {
+    alert('Sesion cerrada');
     this.router.navigate(['/login']);
     // TODO
   }
