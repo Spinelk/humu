@@ -1,10 +1,9 @@
-<div
-  class="mx-auto w-full max-w-md p-4 pt-8 sm:p-6 md:p-8"
->
+<div class="mx-auto w-full max-w-md p-4 pt-8 sm:p-6 md:p-8">
   <form class="space-y-6" action="#">
     <h5 class="text-3xl font-bold text-gray-900 dark:text-white">
       Crear Cuenta
     </h5>
+
     <div>
       <label
         for="correo"
@@ -13,11 +12,27 @@
       >
       <input
         type="email"
-        [(ngModel)]="correo"
+        [(ngModel)]="userData.email"
         name="correo"
         id="correo"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         placeholder="nombre@dominio.com"
+        required
+      />
+    </div>
+    <div>
+      <label
+        for="usuario"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Ingresa un usuario</label
+      >
+      <input
+        type="text"
+        [(ngModel)]="userData.username"
+        name="usuario"
+        id="usuario"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        placeholder="usuario"
         required
       />
     </div>
@@ -29,7 +44,7 @@
       >
       <input
         type="password"
-        [(ngModel)]="contrasena"
+        [(ngModel)]="userData.password"
         name="contrasena"
         id="contrasena"
         placeholder="••••••••"

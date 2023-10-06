@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http';
 
 // Vistas
 import { AppComponent } from './app.component';
@@ -52,7 +53,7 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
   ],
   imports: [
     // Angular
-    BrowserModule, AppRoutingModule, FormsModule,
+    BrowserModule, AppRoutingModule, FormsModule, HttpClientModule,
     // Firebase
     AngularFireModule.initializeApp(environment.firebaseConfig), AngularFireAuthModule
   ],

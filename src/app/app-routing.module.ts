@@ -1,8 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-import { AngularFireAuthGuard, redirectUnauthorizedTo, redirectLoggedInTo } from '@angular/fire/compat/auth-guard'
-
 // Vistas
 import { HomeComponent } from './vistas/home/home.component';
 import { IniciarSesionComponent } from './vistas/login/iniciar-sesion/iniciar-sesion.component';
@@ -19,14 +17,10 @@ import { LayoutLoginComponent } from './layouts/layout-login/layout-login.compon
 import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
 
 
-const redireccionarlogin = () => redirectUnauthorizedTo(['login']);
-const redireccionarhome = () => redirectLoggedInTo(['home']);
-
 const routes: Routes = [
   { path: '', redirectTo: 'home', pathMatch: 'full' },
   {
     path: '',
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redireccionarhome },
     component: LayoutLoginComponent,
     children: [
       {
@@ -39,7 +33,6 @@ const routes: Routes = [
   },
   {
     path: '',
-    canActivate: [AngularFireAuthGuard], data: { authGuardPipe: redireccionarlogin },
     component: LayoutPrincipalComponent,
     children: [
       {
