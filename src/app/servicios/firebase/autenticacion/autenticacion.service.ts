@@ -1,11 +1,7 @@
-import { Injectable, NgZone } from '@angular/core';
+import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { Observable } from 'rxjs';
 import { Router } from '@angular/router';
 
-// firebase
-import { AngularFireAuth } from '@angular/fire/compat/auth';
-import * as auth from 'firebase/auth';
 
 export interface UserData {
   username: string;
@@ -21,21 +17,25 @@ export class AutenticacionService {
   dominio: string = 'http://127.0.0.1:8000/';
 
   constructor(
-    private afAuth: AngularFireAuth,
     private router: Router,
-    private ngZone: NgZone,
     private http: HttpClient,
   ) {
+
   }
 
   iniciarSesion(data: UserData) {
+    const tokenCSRF = localStorage.getItem('csrfToken');
+    if (!tokenCSRF) {
+      console.error('No se ha encontrado el token CSRF');
+      return;
+    }
     const apiUrl = this.dominio + 'iniciar_sesion';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-CSRFToken': tokenCSRF });
 
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
         // Inicio de sesión exitoso
-        console.table(response);
+        console.log(response);
         this.router.navigate(['/home']);
       },
       error => {
@@ -47,13 +47,18 @@ export class AutenticacionService {
   }
 
   registrarUsuario(data: UserData) {
+    const tokenCSRF = localStorage.getItem('csrfToken');
+    if (!tokenCSRF) {
+      console.error('No se ha encontrado el token CSRF');
+      return;
+    }
     const apiUrl = this.dominio + 'registrar_usuario';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-CSRFToken': tokenCSRF });
 
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
         // Registro exitoso
-        console.table(response);
+        console.log(response);
         this.router.navigate(['/home']);
       },
       error => {
