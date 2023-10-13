@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
-import { User } from 'firebase/auth';
 import { Router } from '@angular/router';
 
 @Component({
@@ -9,13 +8,15 @@ import { Router } from '@angular/router';
   styleUrls: ['./menu-lateral.component.css']
 })
 export class MenuLateralComponent {
-  usuarioActual: User | null = null;
+  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
 
+  nombreUsuario: string = this.usuario.usuario;
+  correoUsuario: string = this.usuario.correo;
   constructor(
     private ServicioAutenticacion: AutenticacionService,
     private router: Router
-  ) { }
-
+  ) {
+  }
   cerrarSesion() {
     this.ServicioAutenticacion.cerrarSesion();
   }

@@ -35,7 +35,8 @@ export class AutenticacionService {
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
         // Inicio de sesión exitoso
-        console.log(response);
+        console.table(response);
+        localStorage.setItem('usuario', JSON.stringify(response));
         this.router.navigate(['/home']);
       },
       error => {
