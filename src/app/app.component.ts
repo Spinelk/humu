@@ -27,7 +27,7 @@ export class AppComponent implements OnInit {
 
     this.http.get(this.dominio +'get_csrf_token').subscribe((data: any) => {
       const token = data.csrf_token;
-      const fechaCreacion= new Date().toISOString();
+      const fechaCreacion= new Date().toLocaleString();
 
       const tokenCSRF: token = {
         tokenCSRF: token,
