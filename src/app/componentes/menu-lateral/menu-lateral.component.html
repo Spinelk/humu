@@ -12,10 +12,31 @@
         <ul class="grid grid-cols-1 gap-4 p-3">
           <li>
             <img
-              class="w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-xl transition duration-100 ease-in-out"
+              class="w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
               src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
               alt=""
             />
+          </li>
+          <li>
+            <div
+              class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-black hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+            >
+              <svg
+                class="w-5 h-5 m-auto"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M9 1v16M1 9h16"
+                />
+              </svg>
+            </div>
           </li>
         </ul>
       </div>
@@ -28,7 +49,7 @@
       <div class="mt-2 mb-6">
         <svg
           routerLink="/home"
-          class="flex-shrink-0 w-6 h-6 shadow-lg text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto hover:transform hover:scale-110 ease-in-out"
+          class="flex-shrink-0 w-6 h-6 shadow-lg text-gray-500 transition duration-100 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto hover:transform hover:scale-110 ease-in-out"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -43,7 +64,7 @@
       <div>
         <button
           type="button"
-          class="flex shadow-lg text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 m-auto w-full hover:transform hover:scale-105 hover:rounded-2xl transition duration-75 ease-in-out"
+          class="flex shadow-lg text-sm bg-gray-800 rounded-full m-auto w-full hover:transform hover:scale-105 hover:rounded-2xl transition duration-100 ease-in-out"
           aria-expanded="false"
           data-dropdown-toggle="dropdown-top-user"
           data-dropdown-placement="top"
@@ -63,7 +84,7 @@
       >
         <div class="px-4 py-3" role="none">
           <p class="text-sm text-gray-900 dark:text-white" role="none">
-            {{ nombreUsuario  }}
+            {{ nombreUsuario }}
           </p>
           <p
             class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
@@ -100,9 +121,7 @@
     class="h-full px-3 pb-4 overflow-y-auto overflow-x-hidden invisible scrollbox bg-slate-100 dark:bg-gray-800 font-medium"
   >
     <div class="visible scrollbox interior">
-      <ul
-        class="grid grid-cols-1 gap-3 pt-3"
-      >
+      <ul class="grid grid-cols-1 gap-3 pt-3">
         <li>
           <a
             routerLink="/comunidad/nombreCanalTexto"
