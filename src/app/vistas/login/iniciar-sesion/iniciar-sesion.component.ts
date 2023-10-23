@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AutenticacionService, UserData } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
+import { AutenticacionService, UserData } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-iniciar-sesion',

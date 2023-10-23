@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
+import { environment } from 'src/environments/environment';
 
 
 export interface UserData {
@@ -14,7 +15,7 @@ export interface UserData {
 })
 export class AutenticacionService {
 
-  dominio: string = 'http://127.0.0.1:8000/';
+  dominio: string = environment.dominioBackend;
 
   constructor(
     private router: Router,

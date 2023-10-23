@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
+import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-home',
