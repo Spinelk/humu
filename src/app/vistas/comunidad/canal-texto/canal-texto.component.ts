@@ -1,13 +1,13 @@
 import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
 
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+
 export interface Message {
-  name: string; // Agrega la propiedad 'name'
-  text: string; // texto del mensaje
-  fecha_hora: string; // fecha y hora del mensaje
+  name: string;
+  text: string;
+  fecha_hora: string;
 }
 
 @Component({
@@ -16,48 +16,49 @@ export interface Message {
   styleUrls: ['./canal-texto.component.css']
 })
 export class CanalTextoComponent {
+
   messages: Observable<Message[]> | undefined;
   messageInput: string = '';
-  nameInput: string = '';
   private dbMessages: AngularFireList<any>;
-  editingMessage: Message | null = null;
+
   usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
   nombreUsuario: string = this.usuario.usuario;
-  correoUsuario: string = this.usuario.correo;
+
 
   constructor(
     private db: AngularFireDatabase,
-    private authService: AngularFireAuth
   ) {
-    this.dbMessages = db.list('mensaje');
-      // #Obtén los mensajes de la base de datos
-      this.messages = this.dbMessages.valueChanges().pipe(
-        map((messages) => {
-          return messages.map((message) => {
-            // #Establece 'Anónimo' como nombre si no se proporciona un nombre
-            if (message.name && message.name.trim() !== 'Anónimo') {
-              return message; // Mantén el mensaje tal como está
-            } else {
-              message.name = 'Anónimo'; // Establece 'Anónimo' como nombre si no se proporciona un nombre
-              return message;
-            };
-          });
-        })
-      );
+    // Obttiene los mensajes de la base de datos
+    this.dbMessages = this.db.list('mensaje');
+
+    this.mostrarMensajes();
   }
 
-  sendMessage(message: string, name: string) {
-    // #Establece el nombre de usuario para el mensaje
-    const displayName = name.trim() === '' ? this.nombreUsuario: name;
 
+  mostrarMensajes() {
+    // Mapea los mensajes a un arreglo de mensajes
+    this.messages = this.dbMessages.valueChanges().pipe(
+      map((messages) => {
+        return messages.map((message) => {
+          // Establece 'Anónimo' como nombre si no se proporciona un nombre
+          if (!message.name) {
+            message.name = 'Anónimo';
+          };
+          return message;
+        });
+      })
+    );
+  }
+
+
+  sendMessage(message: string) {
+    const displayName = this.nombreUsuario;
     const fecha = new Date();
 
-    // #Agrega el mensaje a la base de datos
+    // Agrega el mensaje a la base de datos
     this.dbMessages.push({ name: displayName, text: message, fecha_hora: fecha.toLocaleString() });
-    // #Restablece el campo de entrada de mensaje
+
+    // Restablece el campo de entrada de mensaje
     this.messageInput = '';
-    // #Restablece el campo de entrada de nombre
-    this.nameInput = '';
   }
-  
 }
