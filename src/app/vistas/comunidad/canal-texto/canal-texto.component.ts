@@ -6,9 +6,9 @@ import { map } from 'rxjs/operators';
 
 export interface Message {
   name: string; // Agrega la propiedad 'name'
-  text: string;
-  fecha_hora: string;
-  isEditing: boolean;
+  text: string; // texto del mensaje
+  fecha_hora: string; // fecha y hora del mensaje
+  isEditing: boolean; 
   editedText: string;
 }
 
