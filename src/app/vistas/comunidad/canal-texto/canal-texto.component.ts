@@ -8,8 +8,6 @@ export interface Message {
   name: string; // Agrega la propiedad 'name'
   text: string; // texto del mensaje
   fecha_hora: string; // fecha y hora del mensaje
-  isEditing: boolean; 
-  editedText: string;
 }
 
 @Component({
@@ -20,22 +18,18 @@ export interface Message {
 export class CanalTextoComponent {
   messages: Observable<Message[]> | undefined;
   messageInput: string = '';
-  userEmail: string = '';
   nameInput: string = '';
   private dbMessages: AngularFireList<any>;
   editingMessage: Message | null = null;
+  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  nombreUsuario: string = this.usuario.usuario;
+  correoUsuario: string = this.usuario.correo;
 
   constructor(
     private db: AngularFireDatabase,
     private authService: AngularFireAuth
   ) {
     this.dbMessages = db.list('mensaje');
-
-    // #Verifica el estado de autenticación del usuario actual
-    this.authService.authState.subscribe((user) => {
-      // #Obtén el correo electrónico del usuario actual
-      this.userEmail = user?.email || '';
-
       // #Obtén los mensajes de la base de datos
       this.messages = this.dbMessages.valueChanges().pipe(
         map((messages) => {
@@ -50,12 +44,11 @@ export class CanalTextoComponent {
           });
         })
       );
-    });
   }
 
   sendMessage(message: string, name: string) {
-    // #Establece el correo electrónico del usuario actual como nombre
-    const displayName = name.trim() === '' ? this.userEmail : name;
+    // #Establece el nombre de usuario para el mensaje
+    const displayName = name.trim() === '' ? this.nombreUsuario: name;
 
     const fecha = new Date();
 
@@ -66,4 +59,5 @@ export class CanalTextoComponent {
     // #Restablece el campo de entrada de nombre
     this.nameInput = '';
   }
+  
 }

@@ -24,7 +24,7 @@
 
   <!-- Formulario para enviar mensajes -->
   <div class="py-2">
-    <form (ngSubmit)="sendMessage(messageInput, nameInput)">
+    <form (keydown.enter)="sendMessage(messageInput, nameInput)" >
       <label for="chat" class="sr-only">Your message</label>
       <div
         class="flex items-center px-3 py-2 rounded-lg bg-white dark:bg-gray-700"
