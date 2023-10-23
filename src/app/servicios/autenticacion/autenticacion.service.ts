@@ -5,9 +5,10 @@ import { environment } from 'src/environments/environment';
 
 
 export interface UserData {
-  username: string;
-  email?: string;
-  password: string;
+  nombreUsuario: string;
+  correo?: string;
+  contrasena: string;
+  verificadorContrasena?: string;
 }
 
 @Injectable({

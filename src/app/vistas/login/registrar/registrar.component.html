@@ -12,7 +12,7 @@
       >
       <input
         type="email"
-        [(ngModel)]="userData.email"
+        [(ngModel)]="userData.correo"
         name="correo"
         id="correo"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -28,7 +28,7 @@
       >
       <input
         type="text"
-        [(ngModel)]="userData.username"
+        [(ngModel)]="userData.nombreUsuario"
         name="usuario"
         id="usuario"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
@@ -44,9 +44,25 @@
       >
       <input
         type="password"
-        [(ngModel)]="userData.password"
+        [(ngModel)]="userData.contrasena"
         name="contrasena"
         id="contrasena"
+        placeholder="••••••••"
+        class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
+        required
+      />
+    </div>
+    <div>
+      <label
+        for="verificadorContrasena"
+        class="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+        >Verifica tu contraseña</label
+      >
+      <input
+        type="password"
+        [(ngModel)]="userData.verificadorContrasena"
+        name="verificadorContrasena"
+        id="verificadorContrasena"
         placeholder="••••••••"
         class="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-600 dark:border-gray-500 dark:placeholder-gray-400 dark:text-white"
         required

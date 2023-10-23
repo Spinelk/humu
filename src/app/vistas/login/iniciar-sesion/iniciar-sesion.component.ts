@@ -8,8 +8,8 @@ import { AutenticacionService, UserData } from 'src/app/servicios/autenticacion/
 })
 export class IniciarSesionComponent {
   userData: UserData = {
-    username: '',
-    password: ''
+    nombreUsuario: '',
+    contrasena: ''
   };
 
   constructor(
@@ -18,11 +18,11 @@ export class IniciarSesionComponent {
 
   iniciarSesion() {
     // Validar que el correo y la contraseña no esten vacios
-    if (this.userData.username == "") {
+    if (this.userData.nombreUsuario == "") {
       alert('Debe ingresar un nombre de usuario para iniciar sesión.');
       return;
     }
-    if (this.userData.password == "") {
+    if (this.userData.contrasena == "") {
       alert('Debe ingresar una contraseña para iniciar sesión.');
       return;
     }
