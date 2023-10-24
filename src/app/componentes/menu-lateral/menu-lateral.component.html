@@ -70,11 +70,13 @@
           data-dropdown-placement="top"
         >
           <span class="sr-only">Open user menu</span>
-          <img
-            class="w-full rounded-full hover:transform hover:rounded-2xl transition duration-75 ease-in-out"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="user photo"
-          />
+          <div
+            class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-gray-400 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+          >
+            <span class="m-auto text-2xl font-bold">
+              {{ inicialUsuario }}
+            </span>
+          </div>
         </button>
       </div>
       <!-- Pop up menu -->

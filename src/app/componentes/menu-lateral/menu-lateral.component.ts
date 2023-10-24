@@ -12,6 +12,7 @@ export class MenuLateralComponent {
 
   nombreUsuario: string = this.usuario.usuario;
   correoUsuario: string = this.usuario.correo;
+  inicialUsuario: string = this.nombreUsuario.charAt(0).toUpperCase();
   constructor(
     private ServicioAutenticacion: AutenticacionService,
     private router: Router
