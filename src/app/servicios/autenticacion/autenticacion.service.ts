@@ -32,7 +32,7 @@ export class AutenticacionService {
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
         // Inicio de sesión exitoso
-        console.table(response);
+        // console.table(response);
         localStorage.setItem('usuario', JSON.stringify(response));
         this.router.navigate(['/home']);
       },
@@ -51,8 +51,8 @@ export class AutenticacionService {
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
         // Registro exitoso
-        console.log(response);
-        this.router.navigate(['/home']);
+        // console.log(response);
+        this.iniciarSesion(data);
       },
       error => {
         console.error('Error al registrar el usuario:', error);
