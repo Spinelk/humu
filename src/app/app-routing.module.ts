@@ -21,7 +21,7 @@ import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagin
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'home', pathMatch: 'full' },
+  { path: '', redirectTo: 'login', pathMatch: 'full' },
   {
     path: '',
     component: LayoutLoginComponent,
