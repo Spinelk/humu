@@ -62,6 +62,25 @@ export class AutenticacionService {
     );
   }
 
+  eliminarCuenta(data: UserData) {
+    const apiUrl = this.dominio + 'eliminar_usuario';
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+
+    this.http.post(apiUrl, data, { headers, withCredentials:true }).subscribe(
+      response => {
+        // Eliminación exitosa
+        // console.log(response);
+        alert('Cuenta eliminada');
+        this.router.navigate(['/login']);
+      },
+      error => {
+        console.error('Error al eliminar el usuario:', error);
+
+        // Manejar errores de eliminación
+      }
+    );
+  }
+
   cerrarSesion() {
     alert('Sesion cerrada');
     this.router.navigate(['/login']);
