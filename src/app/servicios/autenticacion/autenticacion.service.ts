@@ -25,17 +25,9 @@ export class AutenticacionService {
 
   }
 
-  iniciarSesion(data: UserData) {
-    const tokenCSRF = localStorage.getItem('tokenCSRF');
-
-    if (!tokenCSRF) {
-      console.error('No se ha encontrado el token CSRF');
-      return;
-    }
-    const tokenCSRFObject = JSON.parse(tokenCSRF || '{}');
-    
+  iniciarSesion(data: UserData) {    
     const apiUrl = this.dominio + 'iniciar_sesion';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-CSRFToken': tokenCSRFObject.tokenCSRF });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {
@@ -53,13 +45,8 @@ export class AutenticacionService {
   }
 
   registrarUsuario(data: UserData) {
-    const tokenCSRF = localStorage.getItem('tokenCSRF');
-    if (!tokenCSRF) {
-      console.error('No se ha encontrado el token CSRF');
-      return;
-    }
     const apiUrl = this.dominio + 'registrar_usuario';
-    const headers = new HttpHeaders({ 'Content-Type': 'application/json', 'X-CSRFToken': tokenCSRF });
+    const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
     this.http.post(apiUrl, data, { headers }).subscribe(
       response => {

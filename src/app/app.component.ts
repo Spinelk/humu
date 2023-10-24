@@ -24,18 +24,5 @@ export class AppComponent implements OnInit {
 
   ngOnInit(): void {
     initFlowbite();
-
-    this.http.get(this.dominio +'get_csrf_token').subscribe((data: any) => {
-      const token = data.csrf_token;
-      const fechaCreacion= new Date().toLocaleString();
-
-      const tokenCSRF: token = {
-        tokenCSRF: token,
-        fechaCreacion: fechaCreacion
-      };
-      
-      console.table(tokenCSRF);
-      localStorage.setItem('tokenCSRF', JSON.stringify(tokenCSRF));
-    });
   }
 }
