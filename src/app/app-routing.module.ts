@@ -2,16 +2,19 @@ import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
 // Vistas
-import { HomeComponent } from './vistas/home/home.component';
 import { IniciarSesionComponent } from './vistas/login/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarComponent } from './vistas/login/registrar/registrar.component';
+
+import { HomeComponent } from './vistas/home/home.component';
 import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
 import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
 import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
+import { ConfiguracionComponent } from './vistas/configuracion/configuracion.component';
 
 // Layouts
 import { LayoutPrincipalComponent } from './layouts/layout-principal/layout-principal.component';
 import { LayoutLoginComponent } from './layouts/layout-login/layout-login.component';
+import { LayoutConfiguracionComponent } from './layouts/layout-configuracion/layout-configuracion.component';
 
 // 404
 import { PaginaNoEncontradaComponent } from './vistas/pagina-no-encontrada/pagina-no-encontrada.component';
@@ -46,6 +49,15 @@ const routes: Routes = [
       },
       {
         path: 'comunidad/nombreCanalVideo', component: CanalVideoComponent
+      },
+    ],
+  },
+  {
+    path: '',
+    component: LayoutConfiguracionComponent,
+    children: [
+      {
+        path: 'configuracion', component: ConfiguracionComponent
       },
     ],
   },

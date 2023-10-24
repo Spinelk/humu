@@ -29,6 +29,8 @@ import { environment } from '../environments/environment';
 // Firebase
 import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
+import { ConfiguracionComponent } from './vistas/configuracion/configuracion.component';
+import { LayoutConfiguracionComponent } from './layouts/layout-configuracion/layout-configuracion.component';
 
 
 @NgModule({
@@ -50,6 +52,8 @@ import { AngularFireAuthModule } from '@angular/fire/compat/auth';
     // Layouts
     LayoutPrincipalComponent,
     LayoutLoginComponent,
+    ConfiguracionComponent,
+    LayoutConfiguracionComponent,
   ],
   imports: [
     // Angular
