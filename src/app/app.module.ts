@@ -31,7 +31,6 @@ import { AngularFireModule } from '@angular/fire/compat';
 import { AngularFireAuthModule } from '@angular/fire/compat/auth';
 import { ConfiguracionComponent } from './vistas/configuracion/configuracion.component';
 import { LayoutConfiguracionComponent } from './layouts/layout-configuracion/layout-configuracion.component';
-import { MainComponent } from './vistas/comunidad/main/main.component';
 
 
 @NgModule({
@@ -55,7 +54,6 @@ import { MainComponent } from './vistas/comunidad/main/main.component';
     LayoutLoginComponent,
     ConfiguracionComponent,
     LayoutConfiguracionComponent,
-    MainComponent,
   ],
   imports: [
     // Angular

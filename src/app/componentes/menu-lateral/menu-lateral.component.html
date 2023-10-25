@@ -12,7 +12,7 @@
         <ul class="grid grid-cols-1 gap-4 p-3">
           <li *ngFor="let comunidad of comunidades">
             <div
-              [routerLink]="['/', comunidad.nombre, 'main']"
+              [routerLink]="['/', comunidad.nombre]"
               class="dark:bg-gray-700 hover:dark:bg-gray-600 dark:text-gray-300 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
               data-tooltip-placement="right"
               [attr.data-tooltip-target]="comunidad.nombre"
@@ -151,7 +151,7 @@
       <ul class="grid grid-cols-1 gap-3 pt-3">
         <li>
           <a
-            routerLink="/comunidad/nombreCanalTexto"
+            [routerLink]="['./canal-texto']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg
@@ -170,7 +170,7 @@
         </li>
         <li>
           <a
-            routerLink="/comunidad/nombreCanalAudio"
+            [routerLink]="['./canal-audio']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg
@@ -190,7 +190,7 @@
         </li>
         <li>
           <a
-            routerLink="/comunidad/nombreCanalVideo"
+            [routerLink]="['./canal-video']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg

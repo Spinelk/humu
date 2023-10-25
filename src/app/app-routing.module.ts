@@ -7,7 +7,6 @@ import { RegistrarComponent } from './vistas/login/registrar/registrar.component
 // Vistas Home
 import { HomeComponent } from './vistas/home/home.component';
 // Vistas comunidad
-import { MainComponent } from './vistas/comunidad/main/main.component';
 import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
 import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
 import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
@@ -48,20 +47,20 @@ const routes: Routes = [
     ],
   },
   {
-    path: '',
+    path: ':comunidad',
     component: LayoutPrincipalComponent,
     children: [
       {
-        path: ':comunidad/main', component: MainComponent
+        path: '', redirectTo: 'canal-texto', pathMatch: 'full' // Esto corresponde a ':comunidad' solo
       },
       {
-        path: ':comunidad/nombreCanalTexto', component: CanalTextoComponent
+        path: 'canal-texto', component: CanalTextoComponent
       },
       {
-        path: ':comunidad/nombreCanalAudio', component: CanalAudioComponent
+        path: 'canal-audio', component: CanalAudioComponent
       },
       {
-        path: ':comunidad/nombreCanalVideo', component: CanalVideoComponent
+        path: 'canal-video', component: CanalVideoComponent
       },
     ],
   },
