@@ -1,6 +1,7 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router, ActivatedRoute } from '@angular/router';
 
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
 
@@ -15,7 +16,7 @@ export interface Message {
   templateUrl: './canal-texto.component.html',
   styleUrls: ['./canal-texto.component.css']
 })
-export class CanalTextoComponent {
+export class CanalTextoComponent implements OnInit {
 
   messages: Observable<Message[]> | undefined;
   messageInput: string = '';
@@ -24,17 +25,28 @@ export class CanalTextoComponent {
   usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
   nombreUsuario: string = this.usuario.usuario;
 
+  comunidad: string | undefined;
 
   constructor(
     private db: AngularFireDatabase,
+    private route: ActivatedRoute,
+    private router: Router,
   ) {
-    // Obttiene los mensajes de la base de datos
-    this.dbMessages = this.db.list('mensaje');
+    const routeUrl = this.router.url;
+    const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
 
+    if (comunidadMatch) {
+      this.comunidad = comunidadMatch[1];
+    }
+    
+    // Obtiene los mensajes de la base de datos
+    this.dbMessages = this.db.list(this.comunidad || 'mensaje');
     this.mostrarMensajes();
   }
 
+  ngOnInit() {
 
+  }
   mostrarMensajes() {
     // Mapea los mensajes a un arreglo de mensajes
     this.messages = this.dbMessages.valueChanges().pipe(

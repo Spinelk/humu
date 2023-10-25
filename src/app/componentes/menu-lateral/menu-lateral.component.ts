@@ -28,7 +28,6 @@ export class MenuLateralComponent implements OnInit {
     // SIN LOCALSTORAGE Guarda las comunidades en un array para iterar sobre ellas en el HTML
     this.comunidadService.obtenerComunidades().subscribe(
       response => {
-        console.log(response);
         this.comunidades = response;
       },
       error => {
