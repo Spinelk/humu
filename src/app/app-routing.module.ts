@@ -1,15 +1,19 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 
-// Vistas
+// Vistas Login
 import { IniciarSesionComponent } from './vistas/login/iniciar-sesion/iniciar-sesion.component';
 import { RegistrarComponent } from './vistas/login/registrar/registrar.component';
-
+// Vistas Home
 import { HomeComponent } from './vistas/home/home.component';
+// Vistas comunidad
+import { MainComponent } from './vistas/comunidad/main/main.component';
 import { CanalTextoComponent } from './vistas/comunidad/canal-texto/canal-texto.component';
 import { CanalAudioComponent } from './vistas/comunidad/canal-audio/canal-audio.component';
 import { CanalVideoComponent } from './vistas/comunidad/canal-video/canal-video.component';
+
 import { ConfiguracionComponent } from './vistas/configuracion/configuracion.component';
+
 
 // Layouts
 import { LayoutPrincipalComponent } from './layouts/layout-principal/layout-principal.component';
@@ -41,14 +45,23 @@ const routes: Routes = [
       {
         path: 'home', component: HomeComponent
       },
+    ],
+  },
+  {
+    path: '',
+    component: LayoutPrincipalComponent,
+    children: [
       {
-        path: 'comunidad/nombreCanalTexto', component: CanalTextoComponent
+        path: ':comunidad/main', component: MainComponent
       },
       {
-        path: 'comunidad/nombreCanalAudio', component: CanalAudioComponent
+        path: ':comunidad/nombreCanalTexto', component: CanalTextoComponent
       },
       {
-        path: 'comunidad/nombreCanalVideo', component: CanalVideoComponent
+        path: ':comunidad/nombreCanalAudio', component: CanalAudioComponent
+      },
+      {
+        path: ':comunidad/nombreCanalVideo', component: CanalVideoComponent
       },
     ],
   },
