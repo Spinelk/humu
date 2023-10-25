@@ -47,6 +47,15 @@ const routes: Routes = [
     ],
   },
   {
+    path: '',
+    component: LayoutConfiguracionComponent,
+    children: [
+      {
+        path: 'configuracion', component: ConfiguracionComponent
+      },
+    ],
+  },
+  {
     path: ':comunidad',
     component: LayoutPrincipalComponent,
     children: [
@@ -61,15 +70,6 @@ const routes: Routes = [
       },
       {
         path: 'canal-video', component: CanalVideoComponent
-      },
-    ],
-  },
-  {
-    path: '',
-    component: LayoutConfiguracionComponent,
-    children: [
-      {
-        path: 'configuracion', component: ConfiguracionComponent
       },
     ],
   },

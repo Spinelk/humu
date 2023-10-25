@@ -1,4 +1,5 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
+import { Router } from '@angular/router';
 declare var JitsiMeetExternalAPI: any;
 
 @Component({
@@ -8,15 +9,27 @@ declare var JitsiMeetExternalAPI: any;
 })
 export class CanalVideoComponent implements OnInit {
   usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  comunidad: string | undefined;
+  nombreSala: string | undefined;
 
   nombreUsuario: string = this.usuario.usuario;
   correoUsuario: string = this.usuario.correo;
 
-  constructor(private renderer: Renderer2) { }
+  constructor(
+    private renderer: Renderer2,
+    private router: Router,
+    ) { 
+    const routeUrl = this.router.url;
+    const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
+
+    if (comunidadMatch) {
+      this.comunidad = comunidadMatch[1];
+    }
+
+    this.nombreSala = this.comunidad + 'fe3w6ChkvCEQ4!';
+  }
 
   ngOnInit() {
-    console.log('onInit');
-
     const interfaceConfig = {
       TOOLBAR_BUTTONS: [
         'microphone',
@@ -43,7 +56,7 @@ export class CanalVideoComponent implements OnInit {
         'videobackgroundblur',
         'download',
         'help',
-        'mute-everyone',
+        // 'mute-everyone',
         'e2ee'
       ],
       SETTINGS_SECTIONS: [
@@ -57,7 +70,7 @@ export class CanalVideoComponent implements OnInit {
 
     const domain = 'meet.jit.si';
     const options = {
-      roomName: 'Canal video',
+      roomName: this.nombreSala,
       width: '100%',
       parentNode: document.querySelector('#meet'),
       userInfo: {
