@@ -1,0 +1,10 @@
+.ml-70px {
+    margin-left: 70px;
+}
+
+
+@media (min-width: 640px) {
+    .sm\:ml-\[19rem\] {
+        margin-left: 19rem/* 304px */;
+    }
+}

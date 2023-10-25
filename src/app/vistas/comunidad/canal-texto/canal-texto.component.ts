@@ -29,7 +29,6 @@ export class CanalTextoComponent implements OnInit {
 
   constructor(
     private db: AngularFireDatabase,
-    private route: ActivatedRoute,
     private router: Router,
   ) {
     const routeUrl = this.router.url;

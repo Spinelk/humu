@@ -1,6 +1,10 @@
 <aside
   id="logo-sidebar"
-  class="grid grid-cols-[23%_77%] fixed top-0 left-0 z-40 w-[19rem] h-screen pt-16 sm:pt-0 transition-transform -translate-x-full bg-white sm:translate-x-0 dark:bg-gray-800"
+  [class.cols-23-77]="mostrarCanales"
+  [class.w-19rem]="mostrarCanales"
+  [class.cols-100-0]="!mostrarCanales"
+  [class.w-70px]="!mostrarCanales"
+  class="grid fixed top-0 left-0 z-40 h-screen pt-16 sm:pt-0 transition-transform -translate-x-full bg-white sm:translate-x-0 dark:bg-gray-800"
   aria-label="Sidebar"
 >
   <!-- Lista Comunidades -->
@@ -145,6 +149,7 @@
 
   <!-- Lista Canales -->
   <div
+    *ngIf="mostrarCanales"
     class="h-full px-3 pb-4 overflow-y-auto overflow-x-hidden invisible scrollbox bg-slate-100 dark:bg-gray-800 font-medium"
   >
     <div class="visible scrollbox interior">

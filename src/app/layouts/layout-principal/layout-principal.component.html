@@ -4,6 +4,8 @@
   <app-menu-lateral></app-menu-lateral>
 
   <main
+    [class.ml-70px]="!mostrarCanales"
+    [class.sm:ml-19rem]="mostrarCanales"
     class="overflow-hidden px-4 bg-slate-100 dark:bg-gray-700 sm:rounded-ss-3xl h-screen sm:ml-[19rem] pt-24 sm:pt-4"
   >
     <router-outlet></router-outlet>

@@ -11,17 +11,31 @@ import { ComunidadService } from 'src/app/servicios/comunidad/comunidad.service'
 })
 export class MenuLateralComponent implements OnInit {
   usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  mostrarCanales: boolean = true;
 
   comunidades: any = [];
 
   nombreUsuario: string = this.usuario.usuario;
   correoUsuario: string = this.usuario.correo;
   inicialUsuario: string = this.nombreUsuario.charAt(0).toUpperCase();
+
   constructor(
     private ServicioAutenticacion: AutenticacionService,
     private comunidadService: ComunidadService,
     private router: Router
   ) {
+    const routeUrl = this.router.url;
+    const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
+
+    if (comunidadMatch) {
+      const comunidad = comunidadMatch[1];
+
+      if (comunidad === 'home') {
+        this.mostrarCanales = false;
+      }
+    }
+
+    console.log(this.mostrarCanales);
   }
 
   ngOnInit() {

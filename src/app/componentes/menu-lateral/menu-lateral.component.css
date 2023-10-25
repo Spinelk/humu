@@ -1,0 +1,15 @@
+.cols-23-77 {
+    grid-template-columns: 23% 77%;
+}
+
+.cols-100-0 {
+    grid-template-columns: 100% 0%;
+}
+
+.w-19rem {
+    width: 19rem;
+}
+
+.w-70px {
+    width: 70px;
+}
