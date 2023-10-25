@@ -10,13 +10,27 @@
     <div class="overflow-y-visible overflow-x-hidden invisible scrollbox">
       <div class="visible scrollbox-interior">
         <ul class="grid grid-cols-1 gap-4 p-3">
-          <li>
-            <img
-              class="w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-              alt=""
-            />
+          <li *ngFor="let comunidad of comunidades">
+            <div
+              class="dark:bg-gray-700 hover:dark:bg-gray-600 dark:text-gray-300 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+              data-tooltip-placement="right"
+              [attr.data-tooltip-target]="comunidad.nombre"
+            >
+              <span class="m-auto text-2xl font-bold">
+                {{ comunidad.nombre[0] }}{{ comunidad.nombre[1] }}
+              </span>
+            </div>
+
+            <div
+              [id]="comunidad.nombre"
+              role="tooltip"
+              class="cursor-pointer absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 delay-500 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+            >
+              {{ comunidad.nombre }}
+              <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
           </li>
+
           <li>
             <div
               class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-black hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
@@ -68,6 +82,7 @@
           aria-expanded="false"
           data-dropdown-toggle="dropdown-top-user"
           data-dropdown-placement="top"
+          [attr.data-tooltip-target]="nombreUsuario"
         >
           <span class="sr-only">Open user menu</span>
           <div
@@ -78,6 +93,15 @@
             </span>
           </div>
         </button>
+
+        <div
+          [id]="nombreUsuario"
+          role="tooltip"
+          class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+        >
+          {{ nombreUsuario }}
+          <div class="tooltip-arrow" data-popper-arrow></div>
+        </div>
       </div>
       <!-- Pop up menu -->
       <div
