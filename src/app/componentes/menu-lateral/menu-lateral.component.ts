@@ -34,8 +34,6 @@ export class MenuLateralComponent implements OnInit {
         this.mostrarCanales = false;
       }
     }
-
-    console.log(this.mostrarCanales);
   }
 
   ngOnInit() {
