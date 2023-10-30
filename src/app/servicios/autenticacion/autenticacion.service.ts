@@ -40,6 +40,7 @@ export class AutenticacionService {
       response => {
         // Inicio de sesión exitoso
         // console.table(response);
+        this.usuario.next(response);
         localStorage.setItem('usuario', JSON.stringify(response));
         this.router.navigate(['/home']);
       },
