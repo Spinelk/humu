@@ -10,14 +10,10 @@ import { ComunidadService } from 'src/app/servicios/comunidad/comunidad.service'
   styleUrls: ['./menu-lateral.component.css']
 })
 export class MenuLateralComponent implements OnInit {
-  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  usuario = this.ServicioAutenticacion.usuario.value;
+
   mostrarCanales: boolean = true;
-
   comunidades: any = [];
-
-  nombreUsuario: string = this.usuario.usuario;
-  correoUsuario: string = this.usuario.correo;
-  inicialUsuario: string = this.nombreUsuario.charAt(0).toUpperCase();
 
   constructor(
     private ServicioAutenticacion: AutenticacionService,

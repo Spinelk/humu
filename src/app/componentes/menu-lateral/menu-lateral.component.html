@@ -87,24 +87,24 @@
           aria-expanded="false"
           data-dropdown-toggle="dropdown-top-user"
           data-dropdown-placement="top"
-          [attr.data-tooltip-target]="nombreUsuario"
+          [attr.data-tooltip-target]="usuario.usuario"
         >
           <span class="sr-only">Open user menu</span>
           <div
             class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-gray-400 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
           >
-            <span class="m-auto text-2xl font-bold">
-              {{ inicialUsuario }}
+            <span class="m-auto text-2xl font-bold uppercase">
+              {{ usuario.usuario[0] }}
             </span>
           </div>
         </button>
 
         <div
-          [id]="nombreUsuario"
+          [id]="usuario.usuario"
           role="tooltip"
           class="absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
         >
-          {{ nombreUsuario }}
+          {{ usuario.usuario }}
           <div class="tooltip-arrow" data-popper-arrow></div>
         </div>
       </div>
@@ -115,13 +115,13 @@
       >
         <div class="px-4 py-3" role="none">
           <p class="text-sm text-gray-900 dark:text-white" role="none">
-            {{ nombreUsuario }}
+            {{ usuario.usuario }}
           </p>
           <p
             class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
             role="none"
           >
-            {{ correoUsuario }}
+            {{ usuario.correo }}
           </p>
         </div>
         <ul class="py-1" role="none">

@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
-import { HttpClient } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 interface token {
   tokenCSRF: string;
@@ -15,14 +15,17 @@ interface token {
 })
 export class AppComponent implements OnInit {
   title = 'myApp';
-  dominio: string = 'http://127.0.0.1:8000/';
-  // 
 
   constructor(
-    private http: HttpClient,
-  ) { }
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     initFlowbite();
+    
+    // si no se encuentra el usuario en el localstorage, se redirige a la página de inicio de sesión
+    if (!localStorage.getItem('usuario')) {
+      this.router.navigate(['/login']);
+    }
   }
 }

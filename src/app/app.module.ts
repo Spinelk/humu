@@ -43,16 +43,16 @@ import { LayoutConfiguracionComponent } from './layouts/layout-configuracion/lay
     CanalTextoComponent,
     CanalVideoComponent,
     CanalAudioComponent,
+    ConfiguracionComponent,
+    PaginaNoEncontradaComponent,
 
     // Componenentes
     MenuLateralComponent,
     NavbarComponent,
-    PaginaNoEncontradaComponent,
 
     // Layouts
     LayoutPrincipalComponent,
     LayoutLoginComponent,
-    ConfiguracionComponent,
     LayoutConfiguracionComponent,
   ],
   imports: [

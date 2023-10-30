@@ -1,5 +1,6 @@
 import { Component, OnInit, Renderer2 } from '@angular/core';
 import { Router } from '@angular/router';
+import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
 declare var JitsiMeetExternalAPI: any;
 
 @Component({
@@ -8,16 +9,16 @@ declare var JitsiMeetExternalAPI: any;
   styleUrls: ['./canal-video.component.css']
 })
 export class CanalVideoComponent implements OnInit {
-  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  usuario = this.ServicioAutenticacion.usuario.value;
+
   comunidad: string | undefined;
   nombreSala: string | undefined;
 
-  nombreUsuario: string = this.usuario.usuario;
-  correoUsuario: string = this.usuario.correo;
 
   constructor(
     private renderer: Renderer2,
     private router: Router,
+    private ServicioAutenticacion: AutenticacionService,
     ) { 
     const routeUrl = this.router.url;
     const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
@@ -74,8 +75,8 @@ export class CanalVideoComponent implements OnInit {
       width: '100%',
       parentNode: document.querySelector('#meet'),
       userInfo: {
-        email: this.correoUsuario,
-        displayName: this.nombreUsuario,
+        email: this.usuario.correo,
+        displayName: this.usuario.usuario,
       },
       lang: 'es',
       noSsl: true,

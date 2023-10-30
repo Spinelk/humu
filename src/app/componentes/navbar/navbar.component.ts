@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 @Component({
@@ -8,14 +7,10 @@ import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticac
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
+  usuario = this.ServicioAutenticacion.usuario.value;
 
-  nombreUsuario: string = this.usuario.usuario;
-  correoUsuario: string = this.usuario.correo;
-  inicialUsuario: string = this.nombreUsuario.charAt(0).toUpperCase();
   constructor(
     private ServicioAutenticacion: AutenticacionService,
-    private router: Router,
   ) { }
 
   cerrarSesion() {

@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { Router, ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 export interface Message {
   name: string;
@@ -22,14 +23,14 @@ export class CanalTextoComponent implements OnInit {
   messageInput: string = '';
   private dbMessages: AngularFireList<any>;
 
-  usuario = JSON.parse(localStorage.getItem('usuario') || '{}');
-  nombreUsuario: string = this.usuario.usuario;
+  usuario = this.ServicioAutenticacion.usuario.value;
 
   comunidad: string | undefined;
 
   constructor(
     private db: AngularFireDatabase,
     private router: Router,
+    private ServicioAutenticacion: AutenticacionService,
   ) {
     const routeUrl = this.router.url;
     const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
@@ -63,7 +64,7 @@ export class CanalTextoComponent implements OnInit {
 
 
   sendMessage(message: string) {
-    const displayName = this.nombreUsuario;
+    const displayName = this.usuario.usuario;
     const fecha = new Date();
 
     // Agrega el mensaje a la base de datos

@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
+import { BehaviorSubject } from 'rxjs';
 
 
 export interface UserData {
@@ -18,6 +19,12 @@ export class AutenticacionService {
 
   dominio: string = environment.dominioBackend;
 
+  // obtener el usuario del localstorage
+  public usuario = new BehaviorSubject<any>(
+    JSON.parse(localStorage.getItem('usuario') || '{}'
+    ));
+
+
   constructor(
     private router: Router,
     private http: HttpClient,
@@ -25,7 +32,7 @@ export class AutenticacionService {
 
   }
 
-  iniciarSesion(data: UserData) {    
+  iniciarSesion(data: UserData) {
     const apiUrl = this.dominio + 'iniciar_sesion';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
@@ -66,7 +73,7 @@ export class AutenticacionService {
     const apiUrl = this.dominio + 'eliminar_usuario';
     const headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-    this.http.post(apiUrl, data, { headers, withCredentials:true }).subscribe(
+    this.http.post(apiUrl, data, { headers, withCredentials: true }).subscribe(
       response => {
         // Eliminación exitosa
         // console.log(response);
@@ -82,6 +89,9 @@ export class AutenticacionService {
   }
 
   cerrarSesion() {
+    // Eliminar el usuario del localstorage
+    localStorage.removeItem('usuario');
+
     alert('Sesion cerrada');
     this.router.navigate(['/login']);
     // TODO
