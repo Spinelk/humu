@@ -3,6 +3,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Router } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { BehaviorSubject } from 'rxjs';
+import { ComunidadService } from '../comunidad/comunidad.service';
 
 
 export interface UserData {
@@ -28,6 +29,7 @@ export class AutenticacionService {
   constructor(
     private router: Router,
     private http: HttpClient,
+    private servicioComunidad: ComunidadService,
   ) {
 
   }
@@ -42,6 +44,7 @@ export class AutenticacionService {
         // console.table(response);
         this.usuario.next(response);
         localStorage.setItem('usuario', JSON.stringify(response));
+        this.servicioComunidad.actualizarListaComunidades();
         this.router.navigate(['/home']);
       },
       error => {
@@ -90,8 +93,9 @@ export class AutenticacionService {
   }
 
   cerrarSesion() {
-    // Eliminar el usuario del localstorage
+    // Eliminar información del usuario del localstorage
     localStorage.removeItem('usuario');
+    localStorage.removeItem('comunidades');
 
     alert('Sesion cerrada');
     this.router.navigate(['/login']);

@@ -13,11 +13,11 @@ export class MenuLateralComponent implements OnInit {
   usuario = this.ServicioAutenticacion.usuario.value;
 
   mostrarCanales: boolean = true;
-  comunidades: any = [];
+  comunidades: any = this.servicioComunidad.comunidades.value;
 
   constructor(
     private ServicioAutenticacion: AutenticacionService,
-    private comunidadService: ComunidadService,
+    private servicioComunidad: ComunidadService,
     private router: Router
   ) {
     const routeUrl = this.router.url;
@@ -33,15 +33,6 @@ export class MenuLateralComponent implements OnInit {
   }
 
   ngOnInit() {
-    // SIN LOCALSTORAGE Guarda las comunidades en un array para iterar sobre ellas en el HTML
-    this.comunidadService.obtenerComunidades().subscribe(
-      response => {
-        this.comunidades = response;
-      },
-      error => {
-        console.error('Error al obtener las comunidades:', error);
-      }
-    );
   }
 
   cerrarSesion() {
