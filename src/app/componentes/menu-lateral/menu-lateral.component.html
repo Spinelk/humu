@@ -1,6 +1,10 @@
 <aside
   id="logo-sidebar"
-  class="grid grid-cols-[23%_77%] fixed top-0 left-0 z-40 w-[19rem] h-screen pt-20 sm:pt-0 transition-transform -translate-x-full bg-white sm:translate-x-0 dark:bg-gray-800"
+  [class.cols-23-77]="mostrarCanales"
+  [class.w-19rem]="mostrarCanales"
+  [class.cols-100-0]="!mostrarCanales"
+  [class.w-70px]="!mostrarCanales"
+  class="grid fixed top-0 left-0 z-40 h-screen pt-16 sm:pt-0 transition-transform -translate-x-full bg-white sm:translate-x-0 dark:bg-gray-800"
   aria-label="Sidebar"
 >
   <!-- Lista Comunidades -->
@@ -10,32 +14,61 @@
     <div class="overflow-y-visible overflow-x-hidden invisible scrollbox">
       <div class="visible scrollbox-interior">
         <ul class="grid grid-cols-1 gap-4 p-3">
-          <li
-            *ngFor="
-              let _ of [
-                1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18,
-                19, 20
-              ]
-            "
-          >
-            <img
-              class="w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-xl transition duration-100 ease-in-out"
-              src="https://flowbite.s3.amazonaws.com/docs/gallery/square/image.jpg"
-              alt=""
-            />
+          <li *ngFor="let comunidad of comunidades">
+            <div
+              [routerLink]="['/', comunidad.nombre]"
+              class="dark:bg-gray-700 hover:dark:bg-gray-600 dark:text-gray-300 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+              data-tooltip-placement="right"
+              [attr.data-tooltip-target]="comunidad.nombre"
+            >
+              <span class="m-auto text-2xl font-bold">
+                {{ comunidad.nombre[0] }}{{ comunidad.nombre[1] }}
+              </span>
+            </div>
+
+            <div
+              [id]="comunidad.nombre"
+              role="tooltip"
+              class="cursor-pointer absolute z-10 invisible inline-block px-3 py-2 text-sm font-medium text-white transition-opacity duration-300 delay-500 bg-gray-900 rounded-lg shadow-sm opacity-0 tooltip dark:bg-gray-700"
+            >
+              {{ comunidad.nombre }}
+              <div class="tooltip-arrow" data-popper-arrow></div>
+            </div>
+          </li>
+
+          <li>
+            <div
+              class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-black hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+            >
+              <svg
+                class="w-5 h-5 m-auto"
+                aria-hidden="true"
+                xmlns="http://www.w3.org/2000/svg"
+                fill="none"
+                viewBox="0 0 18 18"
+              >
+                <path
+                  stroke="currentColor"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  stroke-width="3"
+                  d="M9 1v16M1 9h16"
+                />
+              </svg>
+            </div>
           </li>
         </ul>
       </div>
     </div>
 
     <div
-      class="border-t-2 border-gray-400 dark:border-gray-800 p-3 hidden sm:block"
+      class="border-t-2 border-gray-400 dark:border-gray-800 p-3"
     >
       <!-- Home -->
       <div class="mt-2 mb-6">
         <svg
           routerLink="/home"
-          class="flex-shrink-0 w-6 h-6 shadow-lg text-gray-500 transition duration-75 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto hover:transform hover:scale-110 ease-in-out"
+          class="flex-shrink-0 w-6 h-6 shadow-lg text-gray-500 transition duration-100 dark:text-gray-400 hover:text-gray-900 dark:hover:text-white mx-auto hover:transform hover:scale-110 ease-in-out"
           aria-hidden="true"
           xmlns="http://www.w3.org/2000/svg"
           fill="currentColor"
@@ -50,17 +83,19 @@
       <div>
         <button
           type="button"
-          class="flex shadow-lg text-sm bg-gray-800 rounded-full focus:ring-4 focus:ring-gray-300 dark:focus:ring-gray-600 m-auto w-full hover:transform hover:scale-105 hover:rounded-2xl transition duration-75 ease-in-out"
+          class="flex shadow-lg text-sm bg-gray-800 rounded-full m-auto w-full hover:transform hover:scale-105 hover:rounded-2xl transition duration-100 ease-in-out"
           aria-expanded="false"
           data-dropdown-toggle="dropdown-top-user"
           data-dropdown-placement="top"
         >
           <span class="sr-only">Open user menu</span>
-          <img
-            class="w-full rounded-full hover:transform hover:rounded-2xl transition duration-75 ease-in-out"
-            src="https://flowbite.com/docs/images/people/profile-picture-5.jpg"
-            alt="user photo"
-          />
+          <div
+            class="dark:bg-gray-800 hover:dark:bg-gray-700 dark:text-gray-400 hover:dark:text-white flex w-full shadow-lg aspect-square object-cover rounded-full hover:transform hover:scale-110 hover:rounded-2xl transition duration-100 ease-in-out"
+          >
+            <span class="m-auto text-2xl font-bold uppercase">
+              {{ usuario.usuario[0] }}
+            </span>
+          </div>
         </button>
       </div>
       <!-- Pop up menu -->
@@ -70,19 +105,19 @@
       >
         <div class="px-4 py-3" role="none">
           <p class="text-sm text-gray-900 dark:text-white" role="none">
-            Neil Sims
+            {{ usuario.usuario }}
           </p>
           <p
             class="text-sm font-medium text-gray-900 truncate dark:text-gray-300"
             role="none"
           >
-            neil.sims@flowbite.com
+            {{ usuario.correo }}
           </p>
         </div>
         <ul class="py-1" role="none">
           <li>
             <a
-              href="#"
+              routerLink="/configuracion"
               class="block px-4 py-2 text-sm text-gray-700 hover:bg-gray-100 dark:text-gray-300 dark:hover:bg-gray-600 dark:hover:text-white"
               role="menuitem"
               >Configuraciones</a
@@ -104,16 +139,14 @@
 
   <!-- Lista Canales -->
   <div
-    class="h-full px-3 pb-4 sm:pt-3 overflow-y-auto overflow-x-hidden invisible scrollbox bg-slate-100 dark:bg-gray-800"
+    *ngIf="mostrarCanales"
+    class="h-full px-3 pb-4 overflow-y-auto overflow-x-hidden invisible scrollbox bg-slate-100 dark:bg-gray-800 font-medium"
   >
     <div class="visible scrollbox interior">
-      <ul
-        *ngFor="let _ of [1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11]"
-        class="space-y-2 font-medium mb-2"
-      >
+      <ul class="grid grid-cols-1 gap-3 pt-3">
         <li>
           <a
-            routerLink="/comunidad/nombreCanalTexto"
+            [routerLink]="['./canal-texto']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg
@@ -132,7 +165,7 @@
         </li>
         <li>
           <a
-            routerLink="/comunidad/nombreCanalAudio"
+            [routerLink]="['./canal-audio']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg
@@ -152,7 +185,7 @@
         </li>
         <li>
           <a
-            routerLink="/comunidad/nombreCanalVideo"
+            [routerLink]="['./canal-video']"
             class="flex shadow-md items-center p-2 text-gray-900 rounded-lg bg-slate-200 dark:text-white hover:bg-slate-300 dark:bg-gray-700 dark:hover:bg-gray-600 group hover:transform hover:scale-105 transition duration-75 ease-in-out"
           >
             <svg

@@ -1,15 +1,15 @@
-import { Component } from '@angular/core';
-import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
-import { AngularFireAuth } from '@angular/fire/compat/auth';
+import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
+import { Router } from '@angular/router';
+
+import { AngularFireDatabase, AngularFireList } from '@angular/fire/compat/database';
+import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 export interface Message {
-  name: string; // Agrega la propiedad 'name'
+  name: string;
   text: string;
   fecha_hora: string;
-  isEditing: boolean;
-  editedText: string;
 }
 
 @Component({
@@ -17,53 +17,60 @@ export interface Message {
   templateUrl: './canal-texto.component.html',
   styleUrls: ['./canal-texto.component.css']
 })
-export class CanalTextoComponent {
+export class CanalTextoComponent implements OnInit {
+
   messages: Observable<Message[]> | undefined;
   messageInput: string = '';
-  userEmail: string = '';
-  nameInput: string = '';
   private dbMessages: AngularFireList<any>;
-  editingMessage: Message | null = null;
+
+  usuario = this.ServicioAutenticacion.usuario.value;
+
+  comunidad: string | undefined;
 
   constructor(
     private db: AngularFireDatabase,
-    private authService: AngularFireAuth
+    private router: Router,
+    private ServicioAutenticacion: AutenticacionService,
   ) {
-    this.dbMessages = db.list('mensaje');
+    const routeUrl = this.router.url;
+    const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
 
-    // #Verifica el estado de autenticación del usuario actual
-    this.authService.authState.subscribe((user) => {
-      // #Obtén el correo electrónico del usuario actual
-      this.userEmail = user?.email || '';
-
-      // #Obtén los mensajes de la base de datos
-      this.messages = this.dbMessages.valueChanges().pipe(
-        map((messages) => {
-          return messages.map((message) => {
-            // #Establece 'Anónimo' como nombre si no se proporciona un nombre
-            if (message.name && message.name.trim() !== 'Anónimo') {
-              return message; // Mantén el mensaje tal como está
-            } else {
-              message.name = 'Anónimo'; // Establece 'Anónimo' como nombre si no se proporciona un nombre
-              return message;
-            };
-          });
-        })
-      );
-    });
+    if (comunidadMatch) {
+      this.comunidad = comunidadMatch[1];
+    }
+    
+    // Obtiene los mensajes de la base de datos
+    this.dbMessages = this.db.list(this.comunidad || 'mensaje');
+    this.mostrarMensajes();
   }
 
-  sendMessage(message: string, name: string) {
-    // #Establece el correo electrónico del usuario actual como nombre
-    const displayName = name.trim() === '' ? this.userEmail : name;
+  ngOnInit() {
 
+  }
+  mostrarMensajes() {
+    // Mapea los mensajes a un arreglo de mensajes
+    this.messages = this.dbMessages.valueChanges().pipe(
+      map((messages) => {
+        return messages.map((message) => {
+          // Establece 'Anónimo' como nombre si no se proporciona un nombre
+          if (!message.name) {
+            message.name = 'Anónimo';
+          };
+          return message;
+        });
+      })
+    );
+  }
+
+
+  sendMessage(message: string) {
+    const displayName = this.usuario.usuario;
     const fecha = new Date();
 
-    // #Agrega el mensaje a la base de datos
+    // Agrega el mensaje a la base de datos
     this.dbMessages.push({ name: displayName, text: message, fecha_hora: fecha.toLocaleString() });
-    // #Restablece el campo de entrada de mensaje
+
+    // Restablece el campo de entrada de mensaje
     this.messageInput = '';
-    // #Restablece el campo de entrada de nombre
-    this.nameInput = '';
   }
 }

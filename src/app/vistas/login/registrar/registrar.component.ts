@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
+import { Component } from '@angular/core';
+import { AutenticacionService, UserData } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-registrar',
@@ -7,8 +7,12 @@ import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/a
   styleUrls: ['./registrar.component.css']
 })
 export class RegistrarComponent {
-  correo: string = '';
-  contrasena: string = '';
+  userData: UserData = {
+    nombreUsuario: '',
+    correo: '',
+    contrasena: '',
+    verificadorContrasena: '',
+  };
 
   constructor(
     private ServicioAutenticacion: AutenticacionService,
@@ -16,19 +20,27 @@ export class RegistrarComponent {
 
   registrar() {
     // Validar que los campos no esten vacios
-    if (this.correo == "") {
+    if (this.userData.nombreUsuario == "") {
       alert('Debe ingresar un correo.');
       return;
     }
-    if (this.contrasena == "") {
+    if (this.userData.contrasena == "") {
       alert('Debe ingresar una contraseña.');
       return;
     }
-    if (this.contrasena.length < 6) {
+    if (this.userData.contrasena.length < 6) {
       alert('La contraseña debe tener al menos 6 caracteres.');
       return;
     }
+    if (this.userData.verificadorContrasena == "") {
+      alert('Debe verificar la contraseña.');
+      return;
+    }
+    if (this.userData.contrasena != this.userData.verificadorContrasena) {
+      alert('Las contraseñas no coinciden.');
+      return;
+    }
 
-    this.ServicioAutenticacion.registrarUsuarioConCorreo(this.correo, this.contrasena)
+    this.ServicioAutenticacion.registrarUsuario(this.userData)
   }
 }

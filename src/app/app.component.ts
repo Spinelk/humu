@@ -1,7 +1,12 @@
 import { Component } from '@angular/core';
 import { OnInit } from '@angular/core';
 import { initFlowbite } from 'flowbite';
-import { AutenticacionService } from './servicios/firebase/autenticacion/autenticacion.service';
+import { Router } from '@angular/router';
+
+interface token {
+  tokenCSRF: string;
+  fechaCreacion: string;
+}
 
 @Component({
   selector: 'app-root',
@@ -12,10 +17,15 @@ export class AppComponent implements OnInit {
   title = 'myApp';
 
   constructor(
-    private SerivicioAutenticacion: AutenticacionService,
-  ) { }
+    private router: Router,
+    ) { }
 
   ngOnInit(): void {
     initFlowbite();
+    
+    // si no se encuentra el usuario en el localstorage, se redirige a la página de inicio de sesión
+    if (!localStorage.getItem('usuario')) {
+      this.router.navigate(['/login']);
+    }
   }
 }

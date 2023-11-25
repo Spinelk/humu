@@ -1,11 +1,17 @@
-<div class="bg-white dark:bg-gray-800">
+<div
+  [class.dark:bg-gray-800]="mostrarCanales"
+  [class.dark:bg-gray-900]="!mostrarCanales"
+  class="bg-white"
+>
   <app-navbar class="block sm:hidden"></app-navbar>
 
   <app-menu-lateral></app-menu-lateral>
 
   <main
-    class="overflow-hidden px-4 bg-slate-100 dark:bg-gray-700 sm:rounded-s-3xl h-screen sm:ml-[19rem] pt-24 sm:pt-4"
+    [class.ml-70px]="!mostrarCanales"
+    [class.sm:ml-19rem]="mostrarCanales"
+    class="overflow-hidden px-4 bg-slate-100 dark:bg-gray-700 sm:rounded-ss-3xl h-screen sm:ml-[19rem] pt-24 sm:pt-4"
   >
     <router-outlet></router-outlet>
-</main>
+  </main>
 </div>

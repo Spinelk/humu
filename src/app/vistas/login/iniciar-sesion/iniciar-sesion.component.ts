@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
+import { Component } from '@angular/core';
+import { AutenticacionService, UserData } from 'src/app/servicios/autenticacion/autenticacion.service';
 
 @Component({
   selector: 'app-iniciar-sesion',
@@ -7,8 +7,10 @@ import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/a
   styleUrls: ['./iniciar-sesion.component.css']
 })
 export class IniciarSesionComponent {
-  correo: string = '';
-  contrasena: string = '';
+  userData: UserData = {
+    nombreUsuario: '',
+    contrasena: ''
+  };
 
   constructor(
     private ServicioAutenticacion: AutenticacionService,
@@ -16,15 +18,15 @@ export class IniciarSesionComponent {
 
   iniciarSesion() {
     // Validar que el correo y la contraseña no esten vacios
-    if (this.correo == "") {
-      alert('Debe ingresar un correo para iniciar sesión.');
+    if (this.userData.nombreUsuario == "") {
+      alert('Debe ingresar un nombre de usuario para iniciar sesión.');
       return;
     }
-    if (this.contrasena == "") {
+    if (this.userData.contrasena == "") {
       alert('Debe ingresar una contraseña para iniciar sesión.');
       return;
     }
 
-    this.ServicioAutenticacion.iniciarSesionConCorreo(this.correo, this.contrasena)
+    this.ServicioAutenticacion.iniciarSesion(this.userData)
   }
 }

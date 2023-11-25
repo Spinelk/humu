@@ -1,32 +1,42 @@
-import { Component } from '@angular/core';
-import { AutenticacionService } from 'src/app/servicios/firebase/autenticacion/autenticacion.service';
-import { User } from 'firebase/auth';
+import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+
+import { AutenticacionService } from 'src/app/servicios/autenticacion/autenticacion.service';
+import { ComunidadService } from 'src/app/servicios/comunidad/comunidad.service';
 
 @Component({
   selector: 'app-menu-lateral',
   templateUrl: './menu-lateral.component.html',
   styleUrls: ['./menu-lateral.component.css']
 })
-export class MenuLateralComponent {
-  usuarioActual: User | null = null;
+export class MenuLateralComponent implements OnInit {
+  usuario = this.ServicioAutenticacion.usuario.value;
+
+  mostrarCanales: boolean = true;
+  comunidades: any = this.servicioComunidad.comunidades.value;
 
   constructor(
     private ServicioAutenticacion: AutenticacionService,
+    private servicioComunidad: ComunidadService,
     private router: Router
-  ) { }
+  ) {
+    const routeUrl = this.router.url;
+    const comunidadMatch = routeUrl.match(/\/([^\/]+)/); // Buscar el valor de :comunidad en la URL
+
+    if (comunidadMatch) {
+      const comunidad = comunidadMatch[1];
+
+      if (comunidad === 'home') {
+        this.mostrarCanales = false;
+      }
+    }
+  }
+
+  ngOnInit() {
+  }
 
   cerrarSesion() {
-    // Cerrar sesion con firebase
-    try {
-      this.ServicioAutenticacion.cerrarSesion();
-      alert('Sesion cerrada');
-      this.router.navigate(['/login']);
-    } catch {
-      // Manejar el error
-      alert('Error al cerrar sesion');
-      console.log('Error al cerrar sesion');
-    }
+    this.ServicioAutenticacion.cerrarSesion();
   }
 }
 
