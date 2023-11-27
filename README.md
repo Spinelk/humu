@@ -36,3 +36,11 @@ Inicia la aplicación en modo desarrollo:
 ```
 npm start
 ```
+---
+### ⚠️¡CUIDADO!⚠️
+Si no se ha iniciado el [**Backend**](https://github.com/Spinelk/backend-humu), la aplicación no funcionará correctamente. 
+<br>
+<br>
+Recuerda configurar el archivo **enviroment.ts** con la dirección del backend.
+<br>
+Si no es cambiada, la dirección del backend será: **http://127.0.0.1:8000/**, la cual es la dirección por defecto del backend.
