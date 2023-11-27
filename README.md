@@ -23,10 +23,14 @@ git clone https://github.com/Spinelk/humu.git
 cd tellevoapp
 ```
 
+---
+
 Instala las dependencias:
 ```
 npm install
 ```
+
+---
 
 Inicia la aplicación en modo desarrollo:
 ```
