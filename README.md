@@ -1,27 +1,46 @@
-# MyApp
+# Humu - Proyecto Arquitectura de Software Duoc UC 2023-2
+## Frontend de Humu - Aplicación de llamadas, videollamas y mensajeria instantanea similar a Discord
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.2.3.
+<br>
 
-## Development server
+## Backend
+https://github.com/Spinelk/backend-humu
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+<br>
 
-## Code scaffolding
+## Requisitos
+- node.js 20
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+<br>
 
-## Build
+## Instalación
 
-Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+Clona el repositorio:
 
-## Running unit tests
+```
+git clone https://github.com/Spinelk/humu.git
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+cd tellevoapp
+```
 
-## Running end-to-end tests
+---
 
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Instala las dependencias:
+```
+npm install
+```
 
-## Further help
+---
 
-To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI Overview and Command Reference](https://angular.io/cli) page.
+Inicia la aplicación en modo desarrollo:
+```
+npm start
+```
+---
+### ⚠️¡CUIDADO!⚠️
+Si no se ha iniciado el [**Backend**](https://github.com/Spinelk/backend-humu), la aplicación no funcionará correctamente. 
+<br>
+<br>
+Recuerda configurar el archivo **enviroment.ts** con la dirección del backend.
+<br>
+Si no es cambiada, la dirección del backend será: **http://127.0.0.1:8000/**, la cual es la dirección por defecto del backend.
